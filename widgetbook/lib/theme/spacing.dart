@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:groceries_app/theme/theme.dart';
+import 'package:ui_kit/theme/theme.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart';
 
 import 'group.dart';

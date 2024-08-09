@@ -6,7 +6,7 @@ final darkTheme = AppThemeData(
   typography: TypographyThemeData.fromColor(
     const Color(0xFFEAE0D5),
   ),
-  surface: SurfaceThemeData(
+  surface: ColorThemeData(
     primary: const Color(0xFF202020),
     secondary: const Color(0xFFAFAFAF),
     invert: const Color(0xFFEAE0D5),

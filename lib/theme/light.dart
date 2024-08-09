@@ -6,7 +6,7 @@ final lightTheme = AppThemeData(
   typography: TypographyThemeData.fromColor(
     const Color(0xFF202020),
   ),
-  surface: SurfaceThemeData(
+  surface: ColorThemeData(
     primary: const Color(0xFFEAE0D5),
     secondary: const Color(0xFF343434),
     invert: const Color(0xFF202020),

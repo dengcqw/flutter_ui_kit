@@ -76,7 +76,7 @@ class AppThemeData {
   final TypographyThemeData typography;
   final RadiusThemeData radius;
   final BorderThemeData border;
-  final SurfaceThemeData surface;
+  final ColorThemeData surface;
 }
 
 class BorderThemeData {
@@ -88,8 +88,8 @@ class BorderThemeData {
   final Color highEmphasis;
 }
 
-class SurfaceThemeData {
-  SurfaceThemeData({
+class ColorThemeData {
+  ColorThemeData({
     required this.primary,
     required this.secondary,
     required this.invert,
