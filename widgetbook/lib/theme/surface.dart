@@ -4,41 +4,97 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart';
 import 'group.dart';
 
 @UseCase(
-  name: 'Surface',
+  name: 'Color',
   type: ColorThemeData,
   path: '[Theme]',
 )
 Widget buildColorUseCase(BuildContext context) {
   return WidgetbookGroup(
-    label: 'Surface',
+    label: 'Color',
     children: [
       ColorLabel(
         label: 'Primary',
-        color: AppTheme.of(context).surface.primary,
+        color: AppTheme.of(context).color.primary,
       ),
       ColorLabel(
-        label: 'Secondary',
-        color: AppTheme.of(context).surface.secondary,
+        label: 'blue',
+        color: AppTheme.of(context).color.secondary.blue,
       ),
       ColorLabel(
-        label: 'Invert',
-        color: AppTheme.of(context).surface.invert,
+        label: 'dark red',
+        color: AppTheme.of(context).color.secondary.darkRed,
       ),
       ColorLabel(
-        label: 'Light',
-        color: AppTheme.of(context).surface.light,
+        label: 'red',
+        color: AppTheme.of(context).color.secondary.red,
       ),
       ColorLabel(
-        label: 'Tertiary',
-        color: AppTheme.of(context).surface.tertiary,
+        label: 'yellow',
+        color: AppTheme.of(context).color.secondary.yellow,
       ),
       ColorLabel(
-        label: 'Brand',
-        color: AppTheme.of(context).surface.brand,
+        label: 'green',
+        color: AppTheme.of(context).color.secondary.green,
       ),
       ColorLabel(
-        label: 'Feature',
-        color: AppTheme.of(context).surface.feature,
+        label: 'homeBackground',
+        color: AppTheme.of(context).color.homeBackground,
+      ),
+      ColorLabel(
+        label: 'pageBackground',
+        color: AppTheme.of(context).color.pageBackground,
+      ),
+      ColorLabel(
+        label: 'divider',
+        color: AppTheme.of(context).color.divider,
+      ),
+      ColorLabel(
+        label: 'dividerB7',
+        color: AppTheme.of(context).color.dividerB7,
+      ),
+      ColorLabel(
+        label: 'dividerE4',
+        color: AppTheme.of(context).color.dividerE4,
+      ),
+      ColorLabel(
+        label: 'text primary',
+        color: AppTheme.of(context).color.text.primary,
+      ),
+      ColorLabel(
+        label: 'text secondary',
+        color: AppTheme.of(context).color.text.secondary,
+      ),
+      ColorLabel(
+        label: 'text normal',
+        color: AppTheme.of(context).color.text.normal,
+      ),
+      ColorLabel(
+        label: 'text info',
+        color: AppTheme.of(context).color.text.info,
+      ),
+      ColorLabel(
+        label: 'text info secondary',
+        color: AppTheme.of(context).color.text.infoSecondary,
+      ),
+      ColorLabel(
+        label: 'icon primary',
+        color: AppTheme.of(context).color.icon.primary,
+      ),
+      ColorLabel(
+        label: 'icon secondary',
+        color: AppTheme.of(context).color.icon.secondary,
+      ),
+      ColorLabel(
+        label: 'icon info',
+        color: AppTheme.of(context).color.icon.info,
+      ),
+      ColorLabel(
+        label: 'icon secondary',
+        color: AppTheme.of(context).color.icon.infoSecondary,
+      ),
+      ColorLabel(
+        label: 'icon disabled',
+        color: AppTheme.of(context).color.icon.disabled,
       ),
     ],
   );

@@ -11,23 +11,14 @@ import 'group.dart';
   path: '[Theme]',
 )
 Widget buildTypographyThemeDataUseCase(BuildContext context) {
-  const data = 'The lazy dog jumped over the quick brown fox';
-
   return WidgetbookGroup(
-    label: 'Typography',
+    label: 'TextStyle',
     children: [
-      Text(data, style: AppTheme.of(context).typography.displayRegular32),
-      Text(data, style: AppTheme.of(context).typography.headingSemibold20),
-      Text(data, style: AppTheme.of(context).typography.headingMedium24),
-      Text(data, style: AppTheme.of(context).typography.bodyRegular12),
-      Text(data, style: AppTheme.of(context).typography.bodyRegular14),
-      Text(data, style: AppTheme.of(context).typography.bodyMedium16),
-      Text(data, style: AppTheme.of(context).typography.bodySemiBold16),
-      Text(data, style: AppTheme.of(context).typography.labelMedium11),
-      Text(data, style: AppTheme.of(context).typography.labelMedium14),
-      Text(data, style: AppTheme.of(context).typography.subheadingRegular16),
-      Text(data, style: AppTheme.of(context).typography.subheadingMedium20),
-      Text(data, style: AppTheme.of(context).typography.logoSemiBold20),
+      Text('导航栏', style: AppTheme.of(context).textStyle.navigatonTitle),
+      Text('卡片标题', style: AppTheme.of(context).textStyle.cardTitle),
+      Text('选择标题', style: AppTheme.of(context).textStyle.selectionTitle),
+      Text('列表标题', style: AppTheme.of(context).textStyle.listTitle),
+      Text('列表内容', style: AppTheme.of(context).textStyle.listContent),
     ],
   );
 }

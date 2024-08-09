@@ -20,32 +20,12 @@ Widget buildWidgetbookSpacingUseCase(BuildContext context) {
         spacing: AppTheme.of(context).spacing.none,
       ),
       WidgetbookSpacing(
-        label: 'xs',
-        spacing: AppTheme.of(context).spacing.extraSmall,
+        label: 'page',
+        spacing: AppTheme.of(context).spacing.page,
       ),
       WidgetbookSpacing(
-        label: 'small',
-        spacing: AppTheme.of(context).spacing.small,
-      ),
-      WidgetbookSpacing(
-        label: 'medium',
-        spacing: AppTheme.of(context).spacing.medium,
-      ),
-      WidgetbookSpacing(
-        label: 'large',
-        spacing: AppTheme.of(context).spacing.large,
-      ),
-      WidgetbookSpacing(
-        label: 'xl',
-        spacing: AppTheme.of(context).spacing.extraLarge,
-      ),
-      WidgetbookSpacing(
-        label: '2xl',
-        spacing: AppTheme.of(context).spacing.extraExtraLarge,
-      ),
-      WidgetbookSpacing(
-        label: '3xl',
-        spacing: AppTheme.of(context).spacing.extraExtraExtraLarge,
+        label: 'card',
+        spacing: AppTheme.of(context).spacing.card,
       ),
     ],
   );
@@ -119,7 +99,7 @@ class WidgetbookSpacing extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theColor = color ?? AppTheme.of(context).surface.secondary;
+    final theColor = color ?? AppTheme.of(context).color.secondary.blue;
     return Row(
       children: [
         Expanded(

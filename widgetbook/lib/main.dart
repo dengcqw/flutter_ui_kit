@@ -19,12 +19,9 @@ class WidgetbookApp extends StatelessWidget {
     return Widgetbook(
       directories: directories,
       appBuilder: (context, child) => ColoredBox(
-        color: const Color(0xFF404040),
+        color: Colors.white,
         child: child,
       ),
-      integrations: [
-        WidgetbookCloudIntegration(),
-      ],
       addons: [
         DeviceFrameAddon(
           devices: [
@@ -34,26 +31,21 @@ class WidgetbookApp extends StatelessWidget {
           initialDevice: Devices.ios.iPhone13,
         ),
         InspectorAddon(),
-        LocalizationAddon(
-          locales: AppLocalizations.supportedLocales,
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
-          initialLocale: AppLocalizations.supportedLocales.last,
-        ),
         ThemeAddon(
           themes: [
-            WidgetbookTheme(
+            const WidgetbookTheme(
               name: 'Light',
               data: lightTheme,
             ),
-            WidgetbookTheme(
+            const WidgetbookTheme(
               name: 'Dark',
               data: darkTheme,
             ),
           ],
           themeBuilder: (context, theme, child) => ColoredBox(
-            color: theme.surface.primary,
+            color: theme.color.pageBackground,
             child: DefaultTextStyle(
-              style: theme.typography.bodyMedium16,
+              style: theme.textStyle.listTitle,
               child: AppTheme(
                 data: theme,
                 child: child,
