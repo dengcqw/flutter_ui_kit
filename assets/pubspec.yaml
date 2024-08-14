@@ -12,3 +12,8 @@ environment:
 flutter:
   assets:
     - .
+    - images/
+  fonts:
+    - family: myIcon
+      fonts:
+        - asset: fonts/iconfont.ttf

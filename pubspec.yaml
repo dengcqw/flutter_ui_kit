@@ -8,13 +8,19 @@ environment:
   flutter: ">=3.24.0"
 
 dependencies:
-  assets:
-    path: assets
   flutter:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
   intl: ^0.19.0
+  fluttertoast: any
+  flutter_easyloading: any
+  pull_to_refresh: any
+  cached_network_image: any
+  flustars: any
+  lottie: any
+  flutter_svg: any
+  flutter_inappwebview: any
 
 dev_dependencies:
   very_good_analysis: ^5.1.0
@@ -22,3 +28,9 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   generate: true
+  assets:
+    - assets/images/
+  fonts:
+    - family: myIcon
+      fonts:
+        - asset: assets/fonts/iconfont.ttf
