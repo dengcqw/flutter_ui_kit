@@ -7,29 +7,25 @@ import 'package:collection/collection.dart';
 // 滚动结束回调
 typedef PickerIndexChanged<T> = void Function(T oldValue, T newValue);
 
-// 彻底被选中的回调
-typedef PickerTripleFinished<T> = void Function(int firstIndex, int secondIndex,
-    int tripleIndex, T firstValue, T secondValue, T tripleValue);
-
 class IPickerData {
-  final String defName;
-
-  final int? id;
-
-  displayName() {
-    return defName;
+  String? displayName() {
+    return null;
   }
 
-  displayChild() {
-    return [];
+  Widget? displayChild() {
+    return null;
   }
+}
 
-  IPickerData({this.defName = '', this.id});
+class StringPickerData extends IPickerData {
+  String value;
 
   @override
-  String toString() {
-    return 'IPickerData{defName: $defName, id: $id}';
+  String? displayName() {
+    return value;
   }
+
+  StringPickerData({required this.value});
 }
 
 /// 单个选择器控件
@@ -40,18 +36,18 @@ class PickerWidget<T extends IPickerData> extends StatefulWidget {
   final String hintText;
   final double itemHeight; // 每一项的高度
   final int visiableCount;
+  final int initIndex;
   final List<T> data;
   final PickerIndexChanged<int>? onSelectedItemChanged;
-  final FixedScrollController controller;
 
   const PickerWidget({
+    required this.data,
     Key? key,
     this.hintText = '请选择',
     this.onSelectedItemChanged,
     this.itemHeight = 40.0,
     this.visiableCount = 5,
-    required this.data,
-    required this.controller,
+    this.initIndex = 0,
   }) : super(key: key);
 
   @override
@@ -62,17 +58,19 @@ class _PickerWidgetState extends State<PickerWidget> {
   int currentIndex = 0;
   // 切换前选择的下标
   int oldIndex = 0;
+  late FixedScrollController scrollController;
 
   @override
   void initState() {
-    currentIndex = widget.controller.initialItem;
+    scrollController = FixedScrollController(initialItem: widget.initIndex);
+    currentIndex = widget.initIndex;
     debugPrint('picker_widget ==> 初始选中: $currentIndex');
     super.initState();
   }
 
   @override
   void dispose() {
-    widget.controller.dispose();
+    scrollController.dispose();
     super.dispose();
   }
 
@@ -83,7 +81,7 @@ class _PickerWidgetState extends State<PickerWidget> {
     final double itemHeight = widget.itemHeight;
 
     final emptyItems =
-        List.generate(topCount, (index) => IPickerData(defName: ''));
+        List.generate(topCount, (index) => IPickerData());
     final List<IPickerData> data = [
       ...emptyItems,
       ...widget.data,
@@ -133,8 +131,25 @@ class _PickerWidgetState extends State<PickerWidget> {
             child: SingleChildScrollView(
               child: Column(
                 children: data.mapIndexed((index, itemData) {
-                  final String displayName = itemData.displayName();
-                  if (displayName.isEmpty)
+                  // 使用自定义组件
+                  final Widget? customChild = itemData.displayChild();
+                  if (customChild != null) {
+                    return GestureDetector(
+                      onTap: () {
+                        scrollController.animateToItem(index - topCount,
+                            duration: const Duration(milliseconds: 150),
+                            curve: Curves.easeIn);
+                      },
+                      child: SizedBox(
+                        height: itemHeight,
+                        child: customChild!,
+                      ),
+                    );
+                  }
+
+                  // 使用字符
+                  final String? displayName = itemData.displayName();
+                  if (displayName == null || displayName!.isEmpty)
                     return SizedBox(
                       height: itemHeight,
                     );
@@ -143,7 +158,7 @@ class _PickerWidgetState extends State<PickerWidget> {
 
                   return GestureDetector(
                     onTap: () {
-                      widget.controller.animateToItem(index - topCount,
+                      scrollController.animateToItem(index - topCount,
                           duration: const Duration(milliseconds: 150),
                           curve: Curves.easeIn);
                     },
@@ -164,7 +179,7 @@ class _PickerWidgetState extends State<PickerWidget> {
                   );
                 }).toList(),
               ),
-              controller: widget.controller,
+              controller: scrollController,
               physics: FixedScrollPhysics(itemHeight),
             ),
           ),

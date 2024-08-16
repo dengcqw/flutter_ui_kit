@@ -7,24 +7,24 @@ import 'package:ui_kit/widget/picker/picker_util.dart';
 import 'package:ui_kit/widget/picker/fixed_scroll_physics.dart';
 
 final PickData = [
-  IPickerData(defName: '1', id: 1),
-  IPickerData(defName: '2', id: 2),
-  IPickerData(defName: '3', id: 3),
-  IPickerData(defName: '4', id: 4),
-  IPickerData(defName: '5', id: 4),
-  IPickerData(defName: '6', id: 4),
-  IPickerData(defName: '7', id: 4),
-  IPickerData(defName: '8', id: 4),
-  IPickerData(defName: '9', id: 4),
-  IPickerData(defName: '10', id: 4),
-  IPickerData(defName: '11', id: 4),
-  IPickerData(defName: '12', id: 4),
-  IPickerData(defName: '13', id: 4),
-  IPickerData(defName: '14', id: 4),
-  IPickerData(defName: '15', id: 4),
-  IPickerData(defName: '16', id: 4),
-  IPickerData(defName: '17', id: 4),
-  IPickerData(defName: '18', id: 4),
+  StringPickerData(value: '1'),
+  StringPickerData(value: '2'),
+  StringPickerData(value: '3'),
+  StringPickerData(value: '4'),
+  StringPickerData(value: '5'),
+  StringPickerData(value: '6'),
+  StringPickerData(value: '7'),
+  StringPickerData(value: '8'),
+  StringPickerData(value: '9'),
+  StringPickerData(value: '10'),
+  StringPickerData(value: '11'),
+  StringPickerData(value: '12'),
+  StringPickerData(value: '13'),
+  StringPickerData(value: '14'),
+  StringPickerData(value: '15'),
+  StringPickerData(value: '16'),
+  StringPickerData(value: '17'),
+  StringPickerData(value: '18'),
 ];
 
 @UseCase(
@@ -32,12 +32,9 @@ final PickData = [
   type: PickerWidget,
 )
 Widget buildPickerUseCase(BuildContext context) {
-  FixedScrollController scrollController =
-      FixedScrollController(initialItem: 2);
   int pickIndex = 0;
   PickerWidget widget = PickerWidget(
     data: PickData,
-    controller: scrollController,
     onSelectedItemChanged: (old, index) {
       pickIndex = index;
     },

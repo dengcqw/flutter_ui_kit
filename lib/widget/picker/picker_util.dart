@@ -2,11 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:ui_kit/widget/picker/fixed_scroll_physics.dart';
 import 'package:ui_kit/widget/picker/picker_widget.dart';
 
-///
-/// picker_util
-/// 2023/5/9
-/// @author wym
 class PickerUtil {
+  /// picker header
   static Widget makeDialogWrapper({
     required BuildContext context,
     required Widget pickerWidget,
@@ -66,36 +63,51 @@ class PickerUtil {
     );
   }
 
-  /// 是/否选择弹窗
   static Future<int?> showPickerSingle(
-      BuildContext context, List<IPickerData> list,
-      {String titleText = '请选择',
-      String okText = '确认',
-      String cancelText = '取消',
-      int initIndex = 0}) {
-    FixedScrollController scrollController =
-        FixedScrollController(initialItem: initIndex);
-    int pickIndex = 0;
+    BuildContext context,
+    List<IPickerData> list, {
+    String titleText = '请选择',
+    String okText = '确认',
+    String cancelText = '取消',
+    int initIndex = 0,
+  }) {
+    int pickIndex = initIndex;
     PickerWidget widget = PickerWidget(
       data: list,
-      controller: scrollController,
       onSelectedItemChanged: (old, index) {
         pickIndex = index;
-        //debugPrint('picker_util ==> 滑动: pickIndex: old: $old >>> $index');
       },
     );
     return showModalBottomSheet<int?>(
-        context: context,
-        builder: (context) => SizedBox(
-            height: 46 + 5 * 40,
-            child: makeDialogWrapper(
-              context: context,
-              pickerWidget: widget,
-              titleText: titleText,
-              okText: okText,
-              cancelText: cancelText,
-              onClickOK: () => Navigator.pop(context, pickIndex),
-              onClickCancel: () => Navigator.pop(context, null),
-            )));
+      context: context,
+      builder: (context) => SizedBox(
+        height: 46 + 5 * 40,
+        child: makeDialogWrapper(
+          context: context,
+          pickerWidget: widget,
+          titleText: titleText,
+          okText: okText,
+          cancelText: cancelText,
+          onClickOK: () => Navigator.pop(context, pickIndex),
+          onClickCancel: () => Navigator.pop(context, null),
+        ),
+      ),
+    );
+  }
+
+  static Future<int?> showStringPickerSingle(
+    BuildContext context,
+    List<String> list, {
+    String titleText = '请选择',
+    String okText = '确认',
+    String cancelText = '取消',
+    int initIndex = 0,
+  }) {
+    return showPickerSingle(
+        context, list.map((value) => StringPickerData(value: value)).toList(),
+        titleText: titleText,
+        okText: okText,
+        cancelText: cancelText,
+        initIndex: initIndex);
   }
 }

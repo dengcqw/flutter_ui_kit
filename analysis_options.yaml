@@ -42,3 +42,4 @@ linter:
     # Types
     unrelated_type_equality_checks: true
     avoid_types_on_closure_parameters: true
+    lines_longer_than_80_chars: false

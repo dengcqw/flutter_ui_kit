@@ -7,8 +7,6 @@ environment:
   flutter: ">=3.24.0"
 
 dependencies:
-  assets:
-    path: ../assets
   flutter:
     sdk: flutter
   ui_kit:
@@ -23,3 +21,6 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/
+

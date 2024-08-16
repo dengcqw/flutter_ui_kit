@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart';
-import '../edgeinsets_knob.dart';
+import '../knob/edgeinsets_knob.dart';
 
 import 'package:ui_kit/widget/wrapper.dart';
 

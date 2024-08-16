@@ -21,6 +21,19 @@ dependencies:
   lottie: any
   flutter_svg: any
   flutter_inappwebview: any
+  device_info_plus: any
+  date_format: any
+  scrollable_positioned_list: any
+  uuid: any
+  get: any
+  yl_flutter_components:
+    git:
+      url: ssh://git@code.jms.com:2222/mobile/jtcenter/flutter-components.git
+      ref: 2f564c10522b5b22928ec12b91157e9ff14e1646
+  jt_flutter_echarts:
+    git:
+      url: ssh://git@code.jms.com:2222/mobile/jtcenter/jt_flutter_echarts.git
+      ref: a572d151ce4bea88c7375fdfaef37b2d22e1eb23
 
 dev_dependencies:
   very_good_analysis: ^5.1.0
